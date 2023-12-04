@@ -17,7 +17,11 @@ class ArticleFactory extends Factory
     public function definition(): array
     {
         return [
-            //
+            'title' => $this->faker->sentence(),
+            'slug' => $this->faker->sentence(),
+            'description' => $this->faker->sentence(),
+            'thumbnail' => 'https://source.unsplash.com/random/450×800/?payment',
+            'content' => $this->faker->paragraphs(3, true),
         ];
     }
 }
