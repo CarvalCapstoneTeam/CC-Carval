@@ -3,6 +3,7 @@
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Api\AuthController;
+use App\Http\Controllers\Api\ArticleController;
 
 /*
 |--------------------------------------------------------------------------
@@ -19,3 +20,5 @@ use App\Http\Controllers\Api\AuthController;
 Route::post('register', [AuthController::class, 'register']);
 // Login
 Route::post('login', [AuthController::class, 'login']);
+// Fetch All Data
+Route::get('articles', [ArticleController::class, 'getAllArticles']);
