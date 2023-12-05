@@ -10,7 +10,22 @@ class ArticleController extends Controller
 {
     public function getAllArticles()
     {
-        $articles = Article::all();
+        $articles = Article::latest('source_date')->get(); 
+        if (!$articles) {
+            return response()->json([
+                'error' => true,
+                'message' => 'Articles not found'
+            ], 404);
+        }
+        return response()->json([
+            'error' => false,
+            'message' => 'Articles fetched successfully',
+            'listArticle' => $articles
+        ]);
+    }
+
+    public function getLimitArticles($total){
+        $articles = Article::limit($total)->latest('source_date')->get(); 
         if (!$articles) {
             return response()->json([
                 'error' => true,
@@ -39,4 +54,6 @@ class ArticleController extends Controller
             'showArticle' => $article
         ]);
     }
+
+    
 }
