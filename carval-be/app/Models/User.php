@@ -4,12 +4,14 @@ namespace App\Models;
 
 // use Illuminate\Contracts\Auth\MustVerifyEmail;
 
-use Illuminate\Contracts\Auth\MustVerifyEmail;
-use Illuminate\Database\Eloquent\Factories\HasFactory;
-use Illuminate\Foundation\Auth\User as Authenticatable;
-use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
 use Tymon\JWTAuth\Contracts\JWTSubject;
+use Illuminate\Notifications\Notifiable;
+use App\Notifications\VerifyEmailNotification;
+use Illuminate\Contracts\Auth\MustVerifyEmail;
+use App\Notifications\EmailVerificationNotification;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Foundation\Auth\User as Authenticatable;
 
 class User extends Authenticatable implements MustVerifyEmail, JWTSubject
 {
@@ -65,4 +67,23 @@ class User extends Authenticatable implements MustVerifyEmail, JWTSubject
     {
         return [];
     }
+
+    // Generate otp
+    public function generateOtp()
+    {
+        $otp = rand(1000, 9999);
+        $this->otp = $otp;
+        $this->otp_expired_at = now()->addMinutes(60);
+        $this->save();
+
+        return $otp;
+    }
+
+    // Send Email Verification
+    public function sendEmailVerificationNotification()
+    {
+        $otp = $this->generateOtp();
+        $this->notify(new EmailVerificationNotification($otp));
+    }
+
 }
