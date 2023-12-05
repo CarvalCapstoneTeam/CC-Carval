@@ -20,7 +20,9 @@ use App\Http\Controllers\Api\ArticleController;
 Route::post('register', [AuthController::class, 'register']);
 // Login
 Route::post('login', [AuthController::class, 'login']);
-// Fetch All Data
+// Logout
+Route::post('logout', [AuthController::class, 'logout']);
+// Get All Articles
 Route::get('articles', [ArticleController::class, 'getAllArticles']);
-// Fetch All Data
+// Get Detail Article
 Route::get('articles/{slug}', [ArticleController::class, 'showArticle']);
