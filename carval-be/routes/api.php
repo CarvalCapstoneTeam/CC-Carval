@@ -4,7 +4,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Api\AuthController;
 use App\Http\Controllers\Api\ArticleController;
-use App\Http\Controllers\EmailVerificationController;
+use App\Http\Controllers\Api\EmailVerificationController;
 
 /*
 |--------------------------------------------------------------------------
@@ -30,6 +30,4 @@ Route::get('articles/{total}', [ArticleController::class, 'getLimitArticles']);
 // Get Detail Article
 Route::get('articles/{slug}/show', [ArticleController::class, 'showArticle']);
 
-Route::middleware('auth:api')->group(function () {
-    Route::post('email-verification', [EmailVerificationController::class, 'sendVerificationEmail']);
-});
+Route::post('email-verification', [EmailVerificationController::class, 'sendVerificationEmail']);
