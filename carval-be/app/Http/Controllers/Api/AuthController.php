@@ -51,4 +51,11 @@ class AuthController extends Controller
             'message' => 'User Logged Out'
         ]);
     }
+
+    public function me()
+    {
+        $user = Auth::guard('api')->user();
+
+        return response()->json($user);
+    }
 }

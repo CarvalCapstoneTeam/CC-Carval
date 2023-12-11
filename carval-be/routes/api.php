@@ -23,6 +23,8 @@ Route::post('register', [AuthController::class, 'register']);
 Route::post('login', [AuthController::class, 'login']);
 // Logout
 Route::post('logout', [AuthController::class, 'logout']);
+// Get User Data
+Route::get('me', [AuthController::class, 'me']);
 // Get All Articles
 Route::get('articles', [ArticleController::class, 'getAllArticles']);
 // Get Detail Article
