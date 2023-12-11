@@ -22,6 +22,6 @@ Route::post('register', [AuthController::class, 'register']);
 Route::post('login', [AuthController::class, 'login']);
 // Fetch All Data
 Route::get('articles', [ArticleController::class, 'getAllArticles']);
-Route::get('articles/{total}', [ArticleController::class, 'getLimitArticles']);
 // Detail Data
 Route::get('articles/{slug}/show', [ArticleController::class, 'showArticle']);
+
