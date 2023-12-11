@@ -25,8 +25,6 @@ Route::post('login', [AuthController::class, 'login']);
 Route::post('logout', [AuthController::class, 'logout']);
 // Get All Articles
 Route::get('articles', [ArticleController::class, 'getAllArticles']);
-// Get Limit Article
-Route::get('articles/{total}', [ArticleController::class, 'getLimitArticles']);
 // Get Detail Article
 Route::get('articles/{slug}/show', [ArticleController::class, 'showArticle']);
 
