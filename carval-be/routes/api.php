@@ -31,3 +31,4 @@ Route::get('articles/{total}', [ArticleController::class, 'getLimitArticles']);
 Route::get('articles/{slug}/show', [ArticleController::class, 'showArticle']);
 
 Route::post('email-verification', [EmailVerificationController::class, 'sendVerificationEmail']);
+Route::post('verify-email', [EmailVerificationController::class, 'verifyEmail']);

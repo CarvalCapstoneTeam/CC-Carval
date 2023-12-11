@@ -90,4 +90,18 @@ class User extends Authenticatable implements MustVerifyEmail, JWTSubject
         $this->notify(new EmailVerificationNotification($otp));
     }
 
+    // Verify OTP
+    public function verifyOtp($otp)
+    {
+        if ($this->otp === $otp && $this->otp_expired_at > now()) {
+            $this->email_verified_at = now();
+            $this->otp = null;
+            $this->otp_expired_at = null;
+            $this->save();
+
+            return true;
+        }
+
+        return false;
+    }
 }
