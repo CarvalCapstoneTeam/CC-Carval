@@ -9,6 +9,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use App\Http\Requests\RegisterRequest;
+use Illuminate\Validation\ValidationException;
 
 class AuthController extends Controller
 {
@@ -30,16 +31,26 @@ class AuthController extends Controller
 
     public function login(LoginRequest $request)
     {
-        $request->authenticate();
-        $token = JWTAuth::fromUser(Auth::guard('api')->user());
-        $loginResult = Auth::guard('api')->user();
-        $loginResult['token'] = $token;
+        try {
+            $request->authenticate();
+            $token = JWTAuth::fromUser(Auth::guard('api')->user());
+            $loginResult = Auth::guard('api')->user();
+            $loginResult['token'] = $token;
 
-        return response()->json([
-            'error' => false,
-            'message' => 'success',
-            'loginResult' => $loginResult
-        ]);
+            return response()->json([
+                'error' => false,
+                'message' => 'success',
+                'loginResult' => $loginResult
+            ]);
+        } catch (ValidationException $e) {
+            $errors = $e->errors();
+            $errorMessage = reset($errors)[0];
+
+            return response()->json([
+                'error' => true,
+                'message' => $errorMessage,
+            ], 401);
+        }
     }
 
     public function logout()
