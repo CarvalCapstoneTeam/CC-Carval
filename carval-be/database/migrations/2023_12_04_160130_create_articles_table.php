@@ -15,6 +15,7 @@ return new class extends Migration
             $table->id();
             $table->string('title');
             $table->string('slug')->unique();
+            $table->string('news_writer');
             $table->string('source');
             $table->date('source_date');
             $table->string('description');
