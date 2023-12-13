@@ -19,10 +19,11 @@ class ArticleFactory extends Factory
         return [
             'title' => $this->faker->sentence(),
             'slug' => $this->faker->sentence(),
-            'source' => $this->faker->name(),
+            'news_writer' => $this->faker->name(),
+            'source' => $this->faker->company(),
             'source_date' => $this->faker->date(),
             'description' => $this->faker->sentence(),
-            'thumbnail' => 'https://source.unsplash.com/random/450×800/?payment',
+            'thumbnail' => 'https://source.unsplash.com/random/450×800/?job',
             'content' => $this->faker->paragraphs(3, true),
         ];
     }
