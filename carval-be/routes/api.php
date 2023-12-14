@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Api\AuthController;
 use App\Http\Controllers\Api\ArticleController;
 use App\Http\Controllers\Api\EmailVerificationController;
+use App\Http\Controllers\Api\UserController;
 
 /*
 |--------------------------------------------------------------------------
@@ -37,4 +38,6 @@ Route::middleware('auth:api')->group(function () {
     Route::get('me', [AuthController::class, 'me']);
     // Check Token Validity
     Route::post('check-token', [AuthController::class, 'checkToken']);
+    // Update User Profile
+    Route::put('update-profile', [UserController::class, 'updateProfile']);
 });
