@@ -35,4 +35,6 @@ Route::middleware('auth:api')->group(function () {
     Route::post('logout', [AuthController::class, 'logout']);
     // Get User Data
     Route::get('me', [AuthController::class, 'me']);
+    // Check Token Validity
+    Route::post('check-token', [AuthController::class, 'checkToken']);
 });

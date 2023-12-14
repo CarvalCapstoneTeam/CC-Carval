@@ -69,4 +69,21 @@ class AuthController extends Controller
 
         return response()->json($user);
     }
+
+    public function checkToken()
+    {
+        $token = JWTAuth::getToken();
+
+        if (!$token) {
+            return response()->json([
+                'error' => true,
+                'message' => 'Token is invalid'
+            ], 401);
+        }
+
+        return response()->json([
+            'error' => false,
+            'message' => 'Token is valid',
+        ]);
+    }
 }
