@@ -15,18 +15,28 @@ class AuthController extends Controller
 {
     public function register(RegisterRequest $request)
     {
-        $request->validated();
+        try {
+            $request->validated();
 
-        User::create([
-            'name' => $request->name,
-            'email' => $request->email,
-            'password' => Hash::make($request->password)
-        ]);
+            User::create([
+                'name' => $request->name,
+                'email' => $request->email,
+                'password' => Hash::make($request->password)
+            ]);
 
-        return response()->json([
-            'error' => false,
-            'message' => 'User Created',
-        ]);
+            return response()->json([
+                'error' => false,
+                'message' => 'User Created',
+            ]);
+        } catch (ValidationException $e) {
+            $errors = $e->errors();
+            $errorMessage = reset($errors)[0];
+
+            return response()->json([
+                'error' => true,
+                'message' => $errorMessage,
+            ], 422);
+        }
     }
 
     public function login(LoginRequest $request)
