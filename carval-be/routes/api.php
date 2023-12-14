@@ -21,14 +21,18 @@ use App\Http\Controllers\Api\EmailVerificationController;
 Route::post('register', [AuthController::class, 'register']);
 // Login
 Route::post('login', [AuthController::class, 'login']);
-// Logout
-Route::post('logout', [AuthController::class, 'logout']);
-// Get User Data
-Route::get('me', [AuthController::class, 'me']);
 // Get All Articles
 Route::get('articles', [ArticleController::class, 'getAllArticles']);
 // Get Detail Article
 Route::get('articles/{slug}/show', [ArticleController::class, 'showArticle']);
-
+// Send Email Verification
 Route::post('email-verification', [EmailVerificationController::class, 'sendVerificationEmail']);
+// Verify Email
 Route::post('verify-email', [EmailVerificationController::class, 'verifyEmail']);
+
+Route::middleware('auth:api')->group(function () {
+    // Logout
+    Route::post('logout', [AuthController::class, 'logout']);
+    // Get User Data
+    Route::get('me', [AuthController::class, 'me']);
+});
