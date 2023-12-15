@@ -40,4 +40,6 @@ Route::middleware('auth:api')->group(function () {
     Route::post('check-token', [AuthController::class, 'checkToken']);
     // Update User Profile
     Route::put('update-profile', [UserController::class, 'updateProfile']);
+    // Change User Password
+    Route::put('change-password', [UserController::class, 'changePassword']);
 });
