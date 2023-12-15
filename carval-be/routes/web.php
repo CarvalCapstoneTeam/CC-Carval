@@ -14,8 +14,15 @@ use App\Http\Controllers\Admin\DashboardController;
 | be assigned to the "web" middleware group. Make something great!
 |
 */
+Route::middleware('auth:admin')->group(function () {
+    Route::get('/logout', [AuthController::class, 'logout'])->name('logout');
+    Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard.index');
+});
 
-Route::get('/login', [AuthController::class, 'index'])->name('login.index');
-Route::post('/login', [AuthController::class, 'login'])->name('login');
-Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard.index');
+Route::middleware('guest:admin')->group(function () {
+    Route::get('/login', [AuthController::class, 'index'])->name('login.index');
+    Route::post('/login', [AuthController::class, 'login'])->name('login');
+});
+
+
 

@@ -46,7 +46,7 @@
                             <div class="dropdown-inner">
                                 <ul class="link-list">
                                     <li>
-                                        <a href="">
+                                        <a href="{{ route('logout')}}">
                                             <em class="icon ni ni-signout"></em>
                                             <span>Logout</span>
                                         </a>
