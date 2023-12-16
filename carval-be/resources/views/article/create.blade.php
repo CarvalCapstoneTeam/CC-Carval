@@ -39,7 +39,7 @@
             <div class="card-inner">
                 <div class="preview-block">
                     <span class="preview-title-lg overline-title">Masukkan Artikel</span>
-                    <form method="post" action="" enctype="multipart/form-data"
+                    <form method="post" action="{{ route('article.store')}}" enctype="multipart/form-data"
                         class="is-alter form-validate form-control-wrap">
                         @csrf
                         <div class="row gy-4">

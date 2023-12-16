@@ -1,5 +1,18 @@
 @extends('layouts.app')
 
+@push('js')
+    <script src="{{ asset('assets/js/libs/datatable-btns.js?ver=3.0.3') }}"></script>
+    <script src="{{ asset('assets/js/example-toastr.js?ver=3.0.3') }}"></script>
+    @if (session()->has('success'))
+        <script>
+            let message = @json(session('success'));
+            NioApp.Toast(`<h5>Berhasil</h5><p>${message}</p>`, 'success', {
+                position: 'top-right',
+            });
+        </script>
+    @endif
+@endpush
+
 @section('content')
     <div class="components-preview wide-xl mx-auto">
         <div class="nk-block nk-block-lg">
