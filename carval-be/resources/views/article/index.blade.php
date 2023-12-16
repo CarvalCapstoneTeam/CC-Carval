@@ -11,7 +11,7 @@
             <div class="card card-bordered card-preview">
                 <div class="card-inner">
                     <div class="d-flex">
-                        <a href="" class="btn btn-primary mb-2 me-2">
+                        <a href="{{ route('article.create')}}" class="btn btn-primary mb-2 me-2">
                             <em class="icon ni ni-plus me-1"></em> Tambah Artikel</span>
                         </a>
 

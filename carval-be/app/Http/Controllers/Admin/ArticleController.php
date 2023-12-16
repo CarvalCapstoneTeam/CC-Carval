@@ -14,4 +14,10 @@ class ArticleController extends Controller
         $articles = Article::all();
         return view('article.index', compact('articles', 'title'));
     }
+    public function create()
+    {
+        $title = 'Tambah Artikel';
+        return view('article.create', compact('title'));
+
+    }
 }
