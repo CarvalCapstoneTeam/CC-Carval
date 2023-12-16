@@ -75,6 +75,12 @@ class ArticleController extends Controller
 
         return redirect()->route('article.index')->with('success', 'Article berhasil ditambahkan.');
     }
+    public function show($slug)
+    {
+        $title = 'Detail Artikel';
+        $article = Article::where('slug', $slug)->firstOrFail();
+        return view('article.show', compact('article', 'title'));
+    }
     private function makeUniqueSlug($slug, $currentSlug = null)
     {
         $uniqueSlug = $slug;

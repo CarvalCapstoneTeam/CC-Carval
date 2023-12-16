@@ -55,7 +55,7 @@
                                     </td>
 
                                     <td class="text-nowrap justify-content-center align-items-center text-center">
-                                        <a href=""
+                                        <a href="{{ route('article.show', $article->slug) }}"
                                             class="btn btn-primary btn-xs rounded-pill">
                                             <em class="ni ni-eye"></em>
                                         </a>

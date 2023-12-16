@@ -21,6 +21,7 @@ Route::middleware('auth:admin')->group(function () {
     Route::get('/article', [ArticleController::class, 'index'])->name('article.index');
     Route::get('/article/create', [ArticleController::class, 'create'])->name('article.create');
     Route::post('/article/store', [ArticleController::class, 'store'])->name('article.store');
+    Route::get('/article/{slug}/show', [ArticleController::class, 'show'])->name('article.show');
 });
 
 Route::middleware('guest:admin')->group(function () {
