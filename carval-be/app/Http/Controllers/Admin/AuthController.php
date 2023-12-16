@@ -24,7 +24,7 @@ class AuthController extends Controller
         if (Auth::guard('admin')->attempt($credentials)) {
             $request->session()->regenerate();
 
-            return redirect()->intended('dashboard/admin');
+            return redirect()->intended('dashboard');
         }
 
         return back()->with('error', 'Email dan password tidak sesuai');
