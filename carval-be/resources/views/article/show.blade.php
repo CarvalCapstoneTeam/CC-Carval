@@ -40,6 +40,9 @@
 @section('content')
     <div class="container">
         <div class="col-md-12">
+            <a class="btn btn-primary mb-2" href="{{ route('article.index') }}"><em class="ni ni-back-arrow fs-5"></em></a>
+        </div>
+        <div class="col-md-12">
             <div class="card card-bordered card-preview">
                 <div class="card-inner">
                     <div class="preview-block">
