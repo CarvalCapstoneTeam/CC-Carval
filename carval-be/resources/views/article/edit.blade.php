@@ -43,7 +43,7 @@
             <div class="card-inner">
                 <div class="preview-block">
                     <span class="preview-title-lg overline-title">Edit Artikel</span>
-                    <form method="post" action="" enctype="multipart/form-data"
+                    <form method="post" action="{{ route('article.update', $article->slug)}}" enctype="multipart/form-data"
                         class="is-alter form-validate form-control-wrap">
                         @csrf
                         @method('put')

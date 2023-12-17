@@ -23,6 +23,7 @@ Route::middleware('auth:admin')->group(function () {
     Route::post('/article/store', [ArticleController::class, 'store'])->name('article.store');
     Route::get('/article/{slug}/show', [ArticleController::class, 'show'])->name('article.show');
     Route::get('/article/{slug}/edit', [ArticleController::class, 'edit'])->name('article.edit');
+    Route::put('/article/{slug}/update', [ArticleController::class, 'update'])->name('article.update');
 });
 
 Route::middleware('guest:admin')->group(function () {

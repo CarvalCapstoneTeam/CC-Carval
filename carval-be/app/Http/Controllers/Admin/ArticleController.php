@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Models\Article;
+use Illuminate\Support\Str;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Storage;
@@ -87,6 +88,50 @@ class ArticleController extends Controller
         $title = 'Edit Artikel';
         $article = Article::where('slug', $slug)->firstOrFail();
         return view('article.edit', compact('article', 'title'));
+    }
+
+    public function update(Request $request, $slug, Article $article)
+    {
+        $request->validate([
+            'title' => 'required',
+            'news_writer' => 'required',
+            'source' => 'required',
+            'source_date' => 'required',
+            'description' => 'required',
+            'thumbnail' => 'file|mimes:png,jpg,jpeg',
+            'content' => 'required',
+        ]);
+
+        $article = Article::where('slug', $slug)->firstOrFail();
+
+        $newSlug = Str::slug($request->title, '-');
+        $uniqueSlug = $this->makeUniqueSlug($newSlug, $slug);
+
+        if ($request->hasFile('thumbnail')) {
+            Storage::delete($article->thumbnail);
+
+            $uploadedFile = $request->file('thumbnail');
+            $originalName = $uploadedFile->getClientOriginalName();
+
+            $thumbnailName = "$uniqueSlug" . '-' . $originalName;
+
+            $thumbnail = $uploadedFile->storeAs('public/thumbnail', $thumbnailName);
+
+            $article->update(['thumbnail' => $thumbnail]);
+        }
+
+        $article->update([
+            'title' => $request->title,
+            'slug' => $uniqueSlug,
+            'news_writer' => $request->news_writer,
+            'source' => $request->source,
+            'source_date' => $request->source_date,
+            'description' => $request->description,
+            'content' => $request->content,
+
+        ]);
+
+        return redirect()->route('article.index')->with('success', 'Article updated successfully.');
     }
     private function makeUniqueSlug($slug, $currentSlug = null)
     {
