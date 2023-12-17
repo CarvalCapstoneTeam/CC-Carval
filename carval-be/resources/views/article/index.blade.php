@@ -59,7 +59,7 @@
                                             class="btn btn-primary btn-xs rounded-pill">
                                             <em class="ni ni-eye"></em>
                                         </a>
-                                        <a href=""
+                                        <a href="{{ route('article.edit', $article->slug) }}"
                                             class="btn btn-warning btn-xs rounded-pill">
                                             <em class="ni ni-edit"></em>
                                         </a>

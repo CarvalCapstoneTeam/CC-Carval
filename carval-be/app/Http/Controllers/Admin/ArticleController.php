@@ -81,6 +81,13 @@ class ArticleController extends Controller
         $article = Article::where('slug', $slug)->firstOrFail();
         return view('article.show', compact('article', 'title'));
     }
+
+    public function edit($slug)
+    {
+        $title = 'Edit Artikel';
+        $article = Article::where('slug', $slug)->firstOrFail();
+        return view('article.edit', compact('article', 'title'));
+    }
     private function makeUniqueSlug($slug, $currentSlug = null)
     {
         $uniqueSlug = $slug;
