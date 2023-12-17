@@ -11,6 +11,25 @@
             });
         </script>
     @endif
+    <script>
+        $(document).ready(function() {
+            const datatableWrap = $(".datatable-wrap");
+            const wrappingDiv = $("<div>").addClass("w-100").css("overflow-x", "scroll");
+            datatableWrap.children().appendTo(wrappingDiv);
+            datatableWrap.append(wrappingDiv);
+        });
+        $(document).on('show.bs.modal', '#deleteArticleModal', function(event) {
+            const button = $(event.relatedTarget);
+            const slug = button.data('slug');
+            const title = button.data('title');
+            const modal = $(this);
+            const deleteForm = $('#deleteArticleForm');
+            const deleteMessage = $('#deleteMessage');
+
+            deleteMessage.html(`Are you sure you want to delete the article <strong>${title}</strong>?`);
+            deleteForm.attr('action', `{{ route('article.delete', '') }}/${slug}`);
+        });
+    </script>
 @endpush
 
 @section('content')
@@ -24,7 +43,7 @@
             <div class="card card-bordered card-preview">
                 <div class="card-inner">
                     <div class="d-flex">
-                        <a href="{{ route('article.create')}}" class="btn btn-primary mb-2 me-2">
+                        <a href="{{ route('article.create') }}" class="btn btn-primary mb-2 me-2">
                             <em class="icon ni ni-plus me-1"></em> Tambah Artikel</span>
                         </a>
 
@@ -63,7 +82,9 @@
                                             class="btn btn-warning btn-xs rounded-pill">
                                             <em class="ni ni-edit"></em>
                                         </a>
-                                        <button class="btn btn-danger btn-xs rounded-pill">
+                                        <button class="btn btn-danger btn-xs rounded-pill" data-bs-toggle="modal"
+                                            data-bs-target="#deleteArticleModal" data-slug="{{ $article->slug }}"
+                                            data-title="{{ $article->title }}">
                                             <em class="ni ni-trash"></em>
                                         </button>
                                     </td>
@@ -71,6 +92,30 @@
                             @endforeach
                         </tbody>
                     </table>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    {{-- Delete Modal --}}
+    <div class="modal fade" id="deleteArticleModal">
+        <div class="modal-dialog" role="dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Delete Article</h5>
+                    <a href="#" class="close" data-bs-dismiss="modal" aria-label="Close">
+                        <em class="icon ni ni-cross"></em>
+                    </a>
+                </div>
+                <div class="modal-body">
+                    <form method="POST" class="form-validate is-alter" id="deleteArticleForm">
+                        @csrf
+                        @method('delete')
+                        <div class="mb-3" id="deleteMessage"></div>
+                        <div class="form-group text-end">
+                            <button type="submit" class="btn btn-lg btn-danger">Delete</button>
+                        </div>
+                    </form>
                 </div>
             </div>
         </div>
