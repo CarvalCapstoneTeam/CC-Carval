@@ -10,6 +10,7 @@ use Illuminate\Notifications\Notifiable;
 use App\Notifications\VerifyEmailNotification;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use App\Notifications\EmailVerificationNotification;
+use App\Notifications\ForgotPasswordNotification;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 
@@ -103,5 +104,12 @@ class User extends Authenticatable implements MustVerifyEmail, JWTSubject
         }
 
         return false;
+    }
+
+    // Send Email Forgot Password
+    public function sendForgotPasswordnNotification()
+    {
+        $otp = $this->generateOtp();
+        $this->notify(new ForgotPasswordNotification($otp));
     }
 }

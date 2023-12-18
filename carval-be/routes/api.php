@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Api\AuthController;
 use App\Http\Controllers\Api\ArticleController;
 use App\Http\Controllers\Api\EmailVerificationController;
+use App\Http\Controllers\Api\ResetPasswordController;
 use App\Http\Controllers\Api\UserController;
 
 /*
@@ -30,6 +31,8 @@ Route::get('articles/{slug}/show', [ArticleController::class, 'showArticle']);
 Route::post('email-verification', [EmailVerificationController::class, 'sendVerificationEmail']);
 // Verify Email
 Route::post('verify-email', [EmailVerificationController::class, 'verifyEmail']);
+// Send Email Forgot Password
+Route::post('forgot-password', [ResetPasswordController::class, 'sendForgotPasswordEmail']);
 
 Route::middleware('auth:api')->group(function () {
     // Logout
