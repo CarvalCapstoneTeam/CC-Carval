@@ -37,4 +37,28 @@ class ResetPasswordController extends Controller
             ], 422);
         }
     }
+
+    public function verifyOtpResetPassword(Request $request)
+    {
+        $user = User::where('email', $request->email)->first();
+
+        if (!$user) {
+            return response()->json([
+                'error' => true,
+                'message' => 'User not found'
+            ], 404);
+        }
+
+        if ($user->verifyOtpResetPassword($request->otp)) {
+            return response()->json([
+                'error' => false,
+                'message' => 'OTP verified successfully'
+            ]);
+        }
+
+        return response()->json([
+            'error' => true,
+            'message' => 'Invalid or expired OTP'
+        ], 422);
+    }
 }

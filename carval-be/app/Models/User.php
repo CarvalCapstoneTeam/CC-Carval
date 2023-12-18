@@ -39,6 +39,7 @@ class User extends Authenticatable implements MustVerifyEmail, JWTSubject
         'remember_token',
         'otp',
         'otp_expired_at',
+        'otp_verified_at',
         'created_at',
         'updated_at'
     ];
@@ -111,5 +112,20 @@ class User extends Authenticatable implements MustVerifyEmail, JWTSubject
     {
         $otp = $this->generateOtp();
         $this->notify(new ForgotPasswordNotification($otp));
+    }
+
+    // Verify OTP Reset Password
+    public function verifyOtpResetPassword($otp)
+    {
+        if ($this->otp === $otp && $this->otp_expired_at > now()) {
+            $this->otp = null;
+            $this->otp_expired_at = null;
+            $this->otp_verified_at = now();
+            $this->save();
+
+            return true;
+        }
+
+        return false;
     }
 }
