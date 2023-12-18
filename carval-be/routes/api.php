@@ -35,6 +35,8 @@ Route::post('verify-email', [EmailVerificationController::class, 'verifyEmail'])
 Route::post('forgot-password', [ResetPasswordController::class, 'sendForgotPasswordEmail']);
 // Verify OTP Reset Password
 Route::post('verify-otp', [ResetPasswordController::class, 'verifyOtpResetPassword']);
+// Reset Password
+Route::post('reset-password', [ResetPasswordController::class, 'resetPassword']);
 
 Route::middleware('auth:api')->group(function () {
     // Logout
