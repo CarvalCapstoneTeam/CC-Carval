@@ -16,7 +16,7 @@ use App\Http\Controllers\Admin\DashboardController;
 |
 */
 Route::get('/', function () {
-    return redirect()->route('dashboard.index');
+    return view('front.index');
 });
 
 Route::middleware('auth:admin')->group(function () {
