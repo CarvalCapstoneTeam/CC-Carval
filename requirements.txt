@@ -1,5 +1,5 @@
-flask
-requests
+Flask
+gunicorn
 keras
-tensorflow
 nltk
+tensorflow
