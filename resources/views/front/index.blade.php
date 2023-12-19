@@ -122,7 +122,7 @@
                                 </h1>
                                 <p class="home__description">
                                     Using our latest machine learning model, get information about whether you are
-                                    applying for the right job or not
+                                    applying for the right job or not.
                                 </p>
 
                                 <div class="home__buttons">
