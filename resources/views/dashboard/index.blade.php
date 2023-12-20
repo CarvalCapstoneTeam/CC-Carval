@@ -21,7 +21,7 @@
                             </div>
                             <div class="data">
                                 <div class="data-group">
-                                    <div class="amount"></div>
+                                    <div class="amount">{{ $totalArticles }}</div>
                                 </div>
                             </div>
                         </div>
