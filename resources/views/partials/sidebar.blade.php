@@ -33,6 +33,12 @@
                             <span class="nk-menu-text">Artikel</span>
                         </a>
                     </li>
+                    <li class="nk-menu-item">
+                        <a href="{{ route('newsletter.index')}}" class="nk-menu-link">
+                            <span class="nk-menu-icon"><em class="icon ni ni-mail"></em></span>
+                            <span class="nk-menu-text">Newsletter</span>
+                        </a>
+                    </li>
                 </ul>
             </div>
         </div>

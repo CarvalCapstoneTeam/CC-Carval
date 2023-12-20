@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Admin\ArticleController;
+use App\Http\Controllers\Admin\NewsletterController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Admin\AuthController;
 use App\Http\Controllers\Admin\DashboardController;
@@ -29,6 +30,8 @@ Route::middleware('auth:admin')->group(function () {
     Route::get('/article/{slug}/edit', [ArticleController::class, 'edit'])->name('article.edit');
     Route::put('/article/{slug}/update', [ArticleController::class, 'update'])->name('article.update');
     Route::delete('/article/{slug}', [ArticleController::class, 'delete'])->name('article.delete');
+    Route::get('/newsletter', [NewsletterController::class, 'index'])->name('newsletter.index');
+    Route::delete('/newsletter/{id}', [NewsletterController::class, 'delete'])->name('newsletter.delete');
 
 });
 
