@@ -306,14 +306,15 @@
         <!--==================== OUR membersLETTER ====================-->
         <section class="section membersletter">
             <div class="membersletter__container container">
-                <h2 class="section__title">Share your thoughts</h2>
+                <h2 class="section__title">OUR NEWSLETTER</h2>
                 <p class="membersletter__description">
                     Have something to say? Share your thoughts with us! We value your voice
                 </p>
 
-                <form action="" class="membersletter__form">
-                    <input type="text" placeholder="Enter your message" class="membersletter__input" />
-                    <button class="button">Send</button>
+                <form action="http://127.0.0.1:8000/api/newsletter" class="membersletter__form">
+                    <input type="text" placeholder="Enter your message" name="message"
+                        class="membersletter__input" />
+                    <button class="button" id="submit-newsletter">Send</button>
                 </form>
             </div>
         </section>
@@ -338,7 +339,8 @@
 
                 <ul class="footer__links">
                     <li>
-                        <a href="mailto:carvalindo23@gmail.com" class="footer__link"><i class="bi bi-envelope-fill"></i> Email</a>
+                        <a href="mailto:carvalindo23@gmail.com" class="footer__link"><i
+                                class="bi bi-envelope-fill"></i> Email</a>
                     </li>
                     <li>
                         <a href="mailto:carvalindo23@gmail.com" class="footer__link">carvalindo23@gmail.com</a>
@@ -392,6 +394,39 @@
 
     <!--=============== MAIN JS ===============-->
     <script src="{{ asset('assets/front/js/main.js') }}"></script>
+
+    <script>
+        document.querySelector('.membersletter__form').addEventListener('submit', function (event) {
+        event.preventDefault();
+
+        const isConfirmed = confirm('Send your newsletter?');
+
+        if (isConfirmed) {
+            const formData = new FormData(event.target);
+            const submitButton = document.querySelector('#submit-newsletter');
+            submitButton.innerHTML = '<span class="loader"></span>';
+            const url = '{{ env('APP_URL') }}/api/newsletter'
+            fetch(url, {
+                method: 'POST',
+                body: formData,
+            })
+            .then(response => response.json())
+            .then(data => {
+                const status = data.error == true ? 'Error' : 'Success'
+                const message = data.message;
+
+                alert(status + ': ' +  message);
+                submitButton.textContent = 'Send';
+                document.querySelector('.membersletter__input').value = '';
+            })
+            .catch(error => {
+                console.error('Error:', error);
+
+                alert('Error: ' + error);
+            });
+        }
+    });
+    </script>
 </body>
 
 </html>
