@@ -27,11 +27,18 @@ def predict():
     try:
         data = request.get_json(force=True)
 
-        text = ""
-        for _, value in data.items():
-            text += str(value) + " "
-        text = text.rstrip()
+        title = data.get('title', '')
+        location = data.get('location', '')
+        departement = data.get('departement')
+        salary_range = data.get('salary_range', '')
+        company_profile = data.get('company_profile', '')
+        description = data.get('description', '')
+        requirements = data.get('requirements', '')
+        benefits = data.get('benefits', '')
+        telecommuting = data.get('telecommuting', '')
 
+        text = f"{title} {location} {departement} {salary_range} {company_profile} {description} {requirements} {benefits} {telecommuting}"
+        
         words_list = []
         for i in text :
             words_list.extend(text.split())
