@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
     <!--=============== FAVICON ===============-->
-    <link rel="shortcut icon" href="assets/img/favicon.png" type="image/x-icon" />
+    <link rel="shortcut icon" href="{{ asset('assets/front/img/logo-carval.png') }}" type="image/x-icon" />
 
     <!--=============== BOXICONS ===============-->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/boxicons@latest/css/boxicons.min.css" />
@@ -233,7 +233,7 @@
                             <h3 class="member__title">Dewa Sheva Dzaky</h3>
                             <span class="member__subtitle">Sriwijaya University</span>
                             <h3 class="member__title">C315BSY3177</h3>
-                            <a href="https://www.linkedin.com/in/iman-carrazi/" class="button member__button">
+                            <a href="https://www.linkedin.com/in/dewa-sheva-dzaky/" class="button member__button">
                                 <i class="bi bi-linkedin"></i>
                             </a>
                         </div>
@@ -245,7 +245,8 @@
                             <h3 class="member__title">Eka Wira Yudha</h3>
                             <span class="member__subtitle">Sriwijaya University</span>
                             <h3 class="member__title">M315BSY0951 </h3>
-                            <a href="https://www.linkedin.com/in/iman-carrazi/" class="button member__button">
+                            <a href="https://www.linkedin.com/in/eka-wira-yudha-705649221/"
+                                class="button member__button">
                                 <i class="bi bi-linkedin"></i>
                             </a>
                         </div>
@@ -257,7 +258,7 @@
                             <h3 class="member__title">Aprijal Turnip</h3>
                             <span class="member__subtitle">Padjadjaran University</span>
                             <h3 class="member__title">M011BSY1054</h3>
-                            <a href="https://www.linkedin.com/in/iman-carrazi/" class="button member__button">
+                            <a href="https://www.linkedin.com/in/aprijalturnip/" class="button member__button">
                                 <i class="bi bi-linkedin"></i>
                             </a>
                         </div>
@@ -269,7 +270,7 @@
                             <h3 class="member__title">Ajeng Tessa Ningrum</h3>
                             <span class="member__subtitle">Pamulang University</span>
                             <h3 class="member__title">M288BSX1324</h3>
-                            <a href="https://www.linkedin.com/in/iman-carrazi/" class="button member__button">
+                            <a href="https://www.linkedin.com/in/ini-ajeng/" class="button member__button">
                                 <i class="bi bi-linkedin"></i>
                             </a>
                         </div>
@@ -281,7 +282,8 @@
                             <h3 class="member__title">Billy Franko</h3>
                             <span class="member__subtitle">Multi Data Palembang University</span>
                             <h3 class="member__title">A694BSY2183</h3>
-                            <a href="https://www.linkedin.com/in/iman-carrazi/" class="button member__button">
+                            <a href="https://www.linkedin.com/in/billy-franko-6aa500288/"
+                                class="button member__button">
                                 <i class="bi bi-linkedin"></i>
                             </a>
                         </div>
@@ -292,7 +294,7 @@
         </section>
 
         <!--==================== supported ====================-->
-        <section class="section supported">
+        <section class="section supported" id="supported">
             <h2 class="section__title">SUPPORTED BY</h2>
             <div class="supported__container container grid">
                 <img src="{{ asset('assets/front/img/Bangkit.png') }}" alt="" class="supported__img" />
@@ -301,10 +303,10 @@
             </div>
         </section>
 
-        <!--==================== OUR memberSLETTER ====================-->
+        <!--==================== OUR membersLETTER ====================-->
         <section class="section membersletter">
             <div class="membersletter__container container">
-                <h2 class="section__title">Our newsletter</h2>
+                <h2 class="section__title">Share your thoughts</h2>
                 <p class="membersletter__description">
                     Have something to say? Share your thoughts with us! We value your voice
                 </p>
@@ -327,34 +329,19 @@
                 </a>
 
                 <p class="footer__description">
-                    Lorem, ipsum dolor sit amet consectetur
+                    Mobile application for applicant job
                 </p>
-
-                <div class="footer__social">
-                    <a href="https://www.facebook.com/" target="_blank" class="footer__social-link">
-                        <i class="bx bxl-facebook"></i>
-                    </a>
-                    <a href="https://www.instagram.com/" target="_blank" class="footer__social-link">
-                        <i class="bx bxl-instagram-alt"></i>
-                    </a>
-                    <a href="https://twitter.com/" target="_blank" class="footer__social-link">
-                        <i class="bx bxl-twitter"></i>
-                    </a>
-                </div>
             </div>
 
             <div class="footer__content">
-                <h3 class="footer__title">About</h3>
+                <h3 class="footer__title">Contact</h3>
 
                 <ul class="footer__links">
                     <li>
-                        <a href="#" class="footer__link">Lorem</a>
+                        <a href="mailto:carvalindo23@gmail.com" class="footer__link"><i class="bi bi-envelope-fill"></i> Email</a>
                     </li>
                     <li>
-                        <a href="#" class="footer__link">Lorema</a>
-                    </li>
-                    <li>
-                        <a href="#" class="footer__link">Loremv</a>
+                        <a href="mailto:carvalindo23@gmail.com" class="footer__link">carvalindo23@gmail.com</a>
                     </li>
                 </ul>
             </div>
@@ -364,35 +351,29 @@
 
                 <ul class="footer__links">
                     <li>
-                        <a href="#" class="footer__link">Loremc</a>
+                        <a href="#features" class="footer__link">Jova</a>
                     </li>
                     <li>
-                        <a href="#" class="footer__link">Lorems</a>
-                    </li>
-                    <li>
-                        <a href="#" class="footer__link">Lorema</a>
+                        <a href="#features" class="footer__link">Arca</a>
                     </li>
                 </ul>
             </div>
 
             <div class="footer__content">
-                <h3 class="footer__title">Our Company</h3>
+                <h3 class="footer__title">Supported By</h3>
 
                 <ul class="footer__links">
                     <li>
-                        <a href="#" class="footer__link">Lorem</a>
+                        <a href="#supported" class="footer__link">Bangkit Academy</a>
                     </li>
                     <li>
-                        <a href="#" class="footer__link">Loremt</a>
-                    </li>
-                    <li>
-                        <a href="#" class="footer__link">Loremu</a>
+                        <a href="#supported" class="footer__link">Kampus Merdeka</a>
                     </li>
                 </ul>
             </div>
         </div>
 
-        <span class="footer__copy">&#169; Carval Capstone Team. All rigths reserved</span>
+        <span class="footer__copy">&#169; Carval Capstone Team. All rights reserved</span>
 
         <img src="{{ asset('assets/front/img/footer2.png') }}" alt="" class="footer__img-two" />
         <img src="{{ asset('assets/front/img/footer1.png') }}" alt="" class="footer__img-one" />
