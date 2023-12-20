@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Api\AuthController;
 use App\Http\Controllers\Api\ArticleController;
 use App\Http\Controllers\Api\EmailVerificationController;
+use App\Http\Controllers\Api\NewsletterController;
 use App\Http\Controllers\Api\PredictionController;
 use App\Http\Controllers\Api\ResetPasswordController;
 use App\Http\Controllers\Api\UserController;
@@ -38,6 +39,8 @@ Route::post('forgot-password', [ResetPasswordController::class, 'sendForgotPassw
 Route::post('verify-otp', [ResetPasswordController::class, 'verifyOtpResetPassword']);
 // Reset Password
 Route::post('reset-password', [ResetPasswordController::class, 'resetPassword']);
+// Send Newsletter
+Route::post('newsletter', [NewsletterController::class, 'sendNewsletter']);
 // Predict Job Vacancy
 Route::post('predict', [PredictionController::class, 'predict']);
 
