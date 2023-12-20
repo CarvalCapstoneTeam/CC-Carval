@@ -311,7 +311,7 @@
                     Have something to say? Share your thoughts with us! We value your voice
                 </p>
 
-                <form action="http://127.0.0.1:8000/api/newsletter" class="membersletter__form">
+                <form action="" class="membersletter__form">
                     <input type="text" placeholder="Enter your message" name="message"
                         class="membersletter__input" />
                     <button class="button" id="submit-newsletter">Send</button>
