@@ -94,7 +94,7 @@
                                 </div>
 
                                 <div class="home__buttons">
-                                    <a href="#" class="button">Download Now <i class="bi bi-arrow-right"></i></a>
+                                    <a href="{{ route('download') }}" class="button">Download Now <i class="bi bi-arrow-right"></i></a>
                                 </div>
                             </div>
                         </div>
@@ -126,7 +126,7 @@
                                 </p>
 
                                 <div class="home__buttons">
-                                    <a href="#" class="button">Download Now <i
+                                    <a href="{{ route('download') }}" class="button">Download Now <i
                                             class="bi bi-arrow-right md"></i></a>
                                 </div>
                             </div>
@@ -159,7 +159,7 @@
                                 </p>
 
                                 <div class="home__buttons">
-                                    <a href="#" class="button">Download Now <i
+                                    <a href="{{ route('download') }}" class="button">Download Now <i
                                             class="bi bi-arrow-right"></i></a>
                                 </div>
                             </div>

@@ -5,6 +5,7 @@ use App\Http\Controllers\Admin\NewsletterController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Admin\AuthController;
 use App\Http\Controllers\Admin\DashboardController;
+use App\Http\Controllers\DownloadController;
 
 /*
 |--------------------------------------------------------------------------
@@ -19,6 +20,8 @@ use App\Http\Controllers\Admin\DashboardController;
 Route::get('/', function () {
     return view('front.index');
 })->name('home');
+
+Route::get('/download', [DownloadController::class, 'download'])->name('download');
 
 Route::middleware('auth:admin')->group(function () {
     Route::get('/logout', [AuthController::class, 'logout'])->name('logout');
