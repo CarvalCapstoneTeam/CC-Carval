@@ -12,11 +12,11 @@
         <div class="row">
             <div class="col-md-4">
                 <div class="card card-bordered card-preview shadow-sm mt-3">
-                    <div class="nk-ecwg nk-ecwg6">
+                    <a href="{{ route('article.index') }}" class="nk-ecwg nk-ecwg6">
                         <div class="card-inner">
                             <div class="card-title-group">
                                 <div class="card-title">
-                                    <h6 class="title">Berita</h6>
+                                    <h6 class="title">Artikel</h6>
                                 </div>
                             </div>
                             <div class="data">
@@ -25,7 +25,25 @@
                                 </div>
                             </div>
                         </div>
-                    </div>
+                    </a>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card card-bordered card-preview shadow-sm mt-3">
+                    <a href="{{ route('newsletter.index') }}" class="nk-ecwg nk-ecwg6">
+                        <div class="card-inner">
+                            <div class="card-title-group">
+                                <div class="card-title">
+                                    <h6 class="title">Newsletter</h6>
+                                </div>
+                            </div>
+                            <div class="data">
+                                <div class="data-group">
+                                    <div class="amount">{{ $totalNewsletter }}</div>
+                                </div>
+                            </div>
+                        </div>
+                    </a>
                 </div>
             </div>
         </div>

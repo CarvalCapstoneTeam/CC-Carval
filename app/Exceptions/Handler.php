@@ -39,7 +39,7 @@ class Handler extends ExceptionHandler
             ], 401);
         }
 
-        return redirect()->guest($exception->redirectTo() ?? route('login'));
+        return redirect()->guest($exception->redirectTo() ?? route('home'));
     }
 
     protected function unverified($request, HttpException $exception)
@@ -51,13 +51,17 @@ class Handler extends ExceptionHandler
             ], $exception->getStatusCode());
         }
 
-        return redirect()->guest(route('verification.notice'));
+        return redirect()->guest(route('home'));
     }
 
     public function render($request, Throwable $exception)
     {
         if ($exception instanceof HttpException) {
-            return $this->unverified($request, $exception);
+            if ($exception->getStatusCode() === 404) {
+                return parent::render($request, $exception);
+            } else {
+                return $this->unverified($request, $exception);
+            }
         }
 
         if ($exception instanceof AuthenticationException) {

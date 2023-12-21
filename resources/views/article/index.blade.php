@@ -55,7 +55,7 @@
                             <tr class="table-light nk-tb-item nk-tb-head">
                                 <th class="text-nowrap text-center align-middle">No</th>
                                 <th class="text-nowrap text-center align-middle">Judul</th>
-                                <th class="text-nowrap text-center align-middle">Deskripsi
+                                <th class="text-nowrap text-center align-middle">Sumber
                                 </th>
                                 <th class="text-nowrap text-center align-middle">Thumbnail
                                 </th>
@@ -67,7 +67,7 @@
                                 <tr class="text-center align-middle">
                                     <td>{{ $index + 1 }}</td>
                                     <td>{{ $article->title }}</td>
-                                    <td>{{ $article->description }}</td>
+                                    <td>{{ $article->source }}</td>
                                     <td>
                                         <img src="{{ Storage::url($article->thumbnail) }}" class="img-fluid rounded"
                                             style="width: 150px">

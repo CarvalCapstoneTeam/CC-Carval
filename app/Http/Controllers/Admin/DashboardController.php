@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Models\Article;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Models\Newsletter;
 
 class DashboardController extends Controller
 {
@@ -12,6 +13,7 @@ class DashboardController extends Controller
     {
         $title = 'Dashboard';
         $totalArticles = Article::count();
-        return view('dashboard.index', compact('title', 'totalArticles'));
+        $totalNewsletter = Newsletter::count();
+        return view('dashboard.index', compact('title', 'totalArticles', 'totalNewsletter'));
     }
 }

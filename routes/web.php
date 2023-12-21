@@ -18,7 +18,7 @@ use App\Http\Controllers\Admin\DashboardController;
 */
 Route::get('/', function () {
     return view('front.index');
-});
+})->name('home');
 
 Route::middleware('auth:admin')->group(function () {
     Route::get('/logout', [AuthController::class, 'logout'])->name('logout');
