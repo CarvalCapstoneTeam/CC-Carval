@@ -1,14 +1,21 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <title>Reset Password</title>
-</head>
-<body>
-    <h2>Hello, {{ $user->name }},</h2>
-    <p>Please input the OTP to continue reset your password:</p>
-    <h3>{{ $otp }}</h3>
-    <p>This OTP will expire in 60 minutes.</p>
-    <p>Thank you,</p>
-    <p>Carval</p>
-</body>
-</html>
+@extends('emails.layout')
+
+@push('title')
+    Reset Password
+@endpush
+
+@push('greet')
+    Halo {{ $user->name }},
+@endpush
+
+@push('command')
+    Please enter the following OTP to continue resetting your password:
+@endpush
+
+@push('otp-code')
+    {{ $otp }}
+@endpush
+
+@push('paragraph')
+    If you feel that you did not make this request, please disregard this message. This is an automatically generated email, please do not reply to this email.
+@endpush

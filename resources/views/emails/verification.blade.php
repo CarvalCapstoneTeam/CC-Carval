@@ -1,14 +1,21 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <title>Email Verification</title>
-</head>
-<body>
-    <h2>Hello, {{ $user->name }},</h2>
-    <p>Thank you for register. Please verify your email using the following OTP:</p>
-    <h3>{{ $otp }}</h3>
-    <p>This OTP will expire in 60 minutes.</p>
-    <p>Thank you,</p>
-    <p>Carval</p>
-</body>
-</html>
+@extends('emails.layout')
+
+@push('title')
+    Email Verification
+@endpush
+
+@push('greet')
+    Halo {{ $user->name }},
+@endpush
+
+@push('command')
+    Thank you for register. Please verify your email using the following OTP:
+@endpush
+
+@push('otp-code')
+    {{ $otp }}
+@endpush
+
+@push('paragraph')
+    If you feel that you did not make this request, please disregard this message. This is an automatically generated email, please do not reply to this email.
+@endpush
