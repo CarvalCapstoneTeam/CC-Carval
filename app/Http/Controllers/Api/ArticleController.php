@@ -8,6 +8,11 @@ use App\Http\Controllers\Controller;
 
 class ArticleController extends Controller
 {
+    /**
+     * Get All Articles
+     * 
+     * This endpoint is used to get all existing articles.
+     */
     public function getAllArticles(Request $request)
     {
         $currentPage = $request->query('page');
@@ -48,7 +53,16 @@ class ArticleController extends Controller
             'listArticle' => $articles
         ]);
     }
-    
+
+    /**
+     * Get Detail Article
+     * 
+     * This endpoint is used to get detail of one of the of one of the article.
+     * 
+     * @urlParam slug string required
+     * Slug is the unique identifier of the article and can be obtained from the Get All Articles response.<br>
+     * Example: jangan-terjebak-begini-ciri-ciri-tawaran-kerja-yang-ujungnya-penipuan
+     */
     public function showArticle($slug)
     {
         $article = Article::where('slug', $slug)->first();

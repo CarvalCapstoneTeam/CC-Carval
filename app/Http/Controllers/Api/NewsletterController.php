@@ -8,6 +8,14 @@ use Illuminate\Http\Request;
 
 class NewsletterController extends Controller
 {
+    /**
+     * Send Newsletter
+     * 
+     * This endpoint is used to send a newsletter.
+     * 
+     * @bodyParam mesage string required
+     * Example: This app really helps me as a job seeker.
+     */
     public function sendNewsletter(Request $request)
     {
         try {

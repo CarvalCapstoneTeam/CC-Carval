@@ -13,6 +13,37 @@ use Illuminate\Validation\ValidationException;
 
 class AuthController extends Controller
 {
+    /**
+     * Regsiter
+     * 
+     * This endpoint is used to register new users into the system.
+     * 
+     * @bodyParam name string required
+     * <ul>
+     *      <li>Maximum of 255 characters.</li>
+     * </ul>
+     * Example: youremail@gmail.com
+     * 
+     * @bodyParam email string required
+     * <ul>
+     *      <li>Must be a valid email address.</li>
+     *      <li>Maximum of 100 characters.</li>
+     *      <li>Must be unique (cannot be an email that has already been registered).</li>
+     * </ul>
+     * Example: gojosatoru@gmail.com
+     * 
+     * @bodyParam password string required
+     * <ul>
+     *      <li>Minimum of 8 characters.</li>
+     *      <li>Must contain both uppercase and lowercase letters.</li>
+     *      <li>Must contain at least one number.</li>
+     *      <li>Must match the password_confirmation field.</li>
+     * </ul>
+     * Example: Yowaimo123
+     * 
+     * @bodyParam password_confirmation string required
+     * Example: Yowaimo123
+     */
     public function register(RegisterRequest $request)
     {
         $request->validated();
@@ -29,6 +60,20 @@ class AuthController extends Controller
         ]);
     }
 
+    /**
+     * Login
+     * 
+     * This endpoint is used to perform the user login process into the system.
+     * 
+     * @bodyParam email string required
+     * <ul>
+     *      <li>Must be a valid email address.</li>
+     * </ul>
+     * Example: gojosatoru@gmail.com
+     * 
+     * @bodyParam password string required
+     * Example: Yowaimo2023
+     */
     public function login(LoginRequest $request)
     {
         try {
@@ -53,6 +98,13 @@ class AuthController extends Controller
         }
     }
 
+    /**
+     * Logout
+     * 
+     * This endpoint is used to log out users from the system.
+     * 
+     * @authenticated
+     */
     public function logout()
     {
         Auth::guard('api')->logout();
@@ -63,6 +115,13 @@ class AuthController extends Controller
         ]);
     }
 
+    /**
+     * Get User Data
+     * 
+     * This endpoint is used to get user data such as name and email.
+     * 
+     * @authenticated
+     */
     public function me()
     {
         $user = Auth::guard('api')->user();
@@ -70,6 +129,13 @@ class AuthController extends Controller
         return response()->json($user);
     }
 
+    /**
+     * Check Token
+     * 
+     * This endpoint is used to check the validity of the token.
+     * 
+     * @authenticated
+     */
     public function checkToken()
     {
         $token = JWTAuth::getToken();

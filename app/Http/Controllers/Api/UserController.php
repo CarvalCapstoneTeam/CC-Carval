@@ -12,6 +12,25 @@ use Illuminate\Validation\ValidationException;
 
 class UserController extends Controller
 {
+    /**
+     * Update User Profile
+     * 
+     * This endpoint is used to update user profiles such as name and email.
+     * 
+     * @bodyParam name string required
+     * <ul>
+     *      <li>Maximum of 255 characters.</li>
+     * </ul>
+     * Example: gojosatoru@gmail.com
+     * 
+     * @bodyParam email string required
+     * <ul>
+     *      <li>Must be a valid email address.</li>
+     *      <li>Maximum of 100 characters.</li>
+     *      <li>Must be unique (cannot be an email that has already been registered).</li>
+     * </ul>
+     * Example: gojosatoru@gmail.com
+     */
     public function updateProfile(Request $request)
     {
         try {
@@ -41,6 +60,26 @@ class UserController extends Controller
         }
     }
 
+    /**
+     * Change Password
+     * 
+     * This endpoint is used to change the user's password.
+     * 
+     * @bodyParam current_password string required
+     * Example: Yowaimo123
+     * 
+     * @bodyParam new_password string required
+     * <ul>
+     *      <li>Minimum of 8 characters.</li>
+     *      <li>Must contain both uppercase and lowercase letters.</li>
+     *      <li>Must contain at least one number.</li>
+     *      <li>Must match the new_password_confirmation field.</li>
+     * </ul>
+     * Example: JujutsuKaisen23
+     * 
+     * @bodyParam new_password_confirmation string required
+     * Example: JujutsuKaisen23
+     */
     public function changePassword(Request $request)
     {
         try {

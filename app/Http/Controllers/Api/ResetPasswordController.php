@@ -11,6 +11,17 @@ use Illuminate\Validation\ValidationException;
 
 class ResetPasswordController extends Controller
 {
+    /**
+     * Send Email Forgot Password
+     * 
+     * This endpoint is used to send forgot password emails to users.
+     * 
+     * @bodyParam email string required
+     * <ul>
+     *      <li>Must be a valid email address.</li>
+     * </ul>
+     * Example: gojosatoru@gmail.com
+     */
     public function sendForgotPasswordEmail(Request $request)
     {
         try {
@@ -41,6 +52,23 @@ class ResetPasswordController extends Controller
         }
     }
 
+    /**
+     * Verify OTP Forgot Password
+     * 
+     * This endpoint is used to check the validity of the OTP code for reset password.
+     * 
+     * @bodyParam email string required
+     * <ul>
+     *      <li>Must be a valid email address.</li>
+     * </ul>
+     * Example: gojosatoru@gmail.com
+     * 
+     * @bodyParam otp string required
+     * <ul>
+     *      <li>Must match the otp sent to the email.</li>
+     * </ul>
+     * Example: 7859
+     */
     public function verifyOtpResetPassword(Request $request)
     {
         $user = User::where('email', $request->email)->first();
@@ -65,6 +93,29 @@ class ResetPasswordController extends Controller
         ], 422);
     }
 
+    /**
+     * Reset Password
+     * 
+     * This endpoint is used to reset the password after the otp has been verified.
+     * 
+     * @bodyParam email string required
+     * <ul>
+     *      <li>Must be a valid email address.</li>
+     * </ul>
+     * Example: gojosatoru@gmail.com
+     * 
+     * @bodyParam new_password string required
+     * <ul>
+     *      <li>Minimum of 8 characters.</li>
+     *      <li>Must contain both uppercase and lowercase letters.</li>
+     *      <li>Must contain at least one number.</li>
+     *      <li>Must match the new_password_confirmation field.</li>
+     * </ul>
+     * Example: JujutsuKaisen23
+     * 
+     * @bodyParam new_password_confirmation string required
+     * Example: JujutsuKaisen23
+     */
     public function resetPassword(Request $request)
     {
         try {

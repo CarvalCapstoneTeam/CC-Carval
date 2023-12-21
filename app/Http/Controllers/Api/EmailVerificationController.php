@@ -8,6 +8,17 @@ use App\Http\Controllers\Controller;
 
 class EmailVerificationController extends Controller
 {
+    /**
+     * Send Email Verification
+     * 
+     * This endpoint is used to send verification email to users.
+     * 
+     * @bodyParam email string required
+     * <ul>
+     *      <li>Must be a valid email address.</li>
+     * </ul>
+     * Example: gojosatoru@gmail.com
+     */
     public function sendVerificationEmail(Request $request)
     {
         $user = User::where('email', $request->email)->first();
@@ -34,6 +45,23 @@ class EmailVerificationController extends Controller
         ]);
     }
 
+    /**
+     * Verify Email
+     * 
+     * This endpoint is used to send email verification to users.
+     * 
+     * @bodyParam email string required
+     * <ul>
+     *      <li>Must be a valid email address.</li>
+     * </ul>
+     * Example: gojosatoru@gmail.com
+     * 
+     * @bodyParam otp string required
+     * <ul>
+     *      <li>Must match the otp sent to the email.</li>
+     * </ul>
+     * Example: 3418
+     */
     public function verifyEmail(Request $request)
     {
         $user = User::where('email', $request->email)->first();
