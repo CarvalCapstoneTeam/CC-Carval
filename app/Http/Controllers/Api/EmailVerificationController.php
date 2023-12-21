@@ -15,6 +15,7 @@ class EmailVerificationController extends Controller
      * 
      * @bodyParam email string required
      * <ul>
+     *      <li>Must be filled</li>
      *      <li>Must be a valid email address.</li>
      * </ul>
      * Example: gojosatoru@gmail.com
@@ -52,12 +53,14 @@ class EmailVerificationController extends Controller
      * 
      * @bodyParam email string required
      * <ul>
+     *      <li>Must be filled</li>
      *      <li>Must be a valid email address.</li>
      * </ul>
      * Example: gojosatoru@gmail.com
      * 
      * @bodyParam otp string required
      * <ul>
+     *      <li>Must be filled</li>
      *      <li>Must match the otp sent to the email.</li>
      * </ul>
      * Example: 3418

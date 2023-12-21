@@ -70,6 +70,7 @@ class UserController extends Controller
      * 
      * @bodyParam new_password string required
      * <ul>
+     *      <li>Must be filled</li>
      *      <li>Minimum of 8 characters.</li>
      *      <li>Must contain both uppercase and lowercase letters.</li>
      *      <li>Must contain at least one number.</li>
@@ -78,6 +79,10 @@ class UserController extends Controller
      * Example: JujutsuKaisen23
      * 
      * @bodyParam new_password_confirmation string required
+     * <ul>
+     *      <li>Must be filled</li>
+     *      <li>Must match the new_password field.</li>
+     * </ul>
      * Example: JujutsuKaisen23
      */
     public function changePassword(Request $request)

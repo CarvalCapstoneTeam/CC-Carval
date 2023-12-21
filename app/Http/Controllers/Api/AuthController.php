@@ -22,10 +22,11 @@ class AuthController extends Controller
      * <ul>
      *      <li>Maximum of 255 characters.</li>
      * </ul>
-     * Example: youremail@gmail.com
+     * Example: Gojo Satoru
      * 
      * @bodyParam email string required
      * <ul>
+     *      <li>Must be filled</li>
      *      <li>Must be a valid email address.</li>
      *      <li>Maximum of 100 characters.</li>
      *      <li>Must be unique (cannot be an email that has already been registered).</li>
@@ -34,6 +35,7 @@ class AuthController extends Controller
      * 
      * @bodyParam password string required
      * <ul>
+     *      <li>Must be filled</li>
      *      <li>Minimum of 8 characters.</li>
      *      <li>Must contain both uppercase and lowercase letters.</li>
      *      <li>Must contain at least one number.</li>
@@ -42,6 +44,10 @@ class AuthController extends Controller
      * Example: Yowaimo123
      * 
      * @bodyParam password_confirmation string required
+     * <ul>
+     *      <li>Must be filled</li>
+     *      <li>Must match the password field.</li>
+     * </ul>
      * Example: Yowaimo123
      */
     public function register(RegisterRequest $request)
@@ -67,12 +73,16 @@ class AuthController extends Controller
      * 
      * @bodyParam email string required
      * <ul>
+     *      <li>Must be filled</li>
      *      <li>Must be a valid email address.</li>
      * </ul>
      * Example: gojosatoru@gmail.com
      * 
      * @bodyParam password string required
-     * Example: Yowaimo2023
+     * <ul>
+     *      <li>Must be filled</li>
+     * </ul>
+     * Example: Yowaimo123
      */
     public function login(LoginRequest $request)
     {
