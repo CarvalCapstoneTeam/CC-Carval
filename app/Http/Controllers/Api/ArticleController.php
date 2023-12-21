@@ -38,6 +38,10 @@ class ArticleController extends Controller
             ], 404);
         }
 
+        foreach ($articles as $article) {
+            $article->thumbnail = env('APP_URL') . '/' . str_replace('public/', 'storage/', $article->thumbnail);
+        }
+        
         return response()->json([
             'error' => false,
             'message' => 'Articles fetched successfully',
@@ -48,6 +52,7 @@ class ArticleController extends Controller
     public function showArticle($slug)
     {
         $article = Article::where('slug', $slug)->first();
+        $article->thumbnail = env('APP_URL') . '/' .str_replace('public/', 'storage/', $article->thumbnail);
         if (!$article) {
             return response()->json([
                 'error' => true,
