@@ -41,8 +41,6 @@ Route::post('verify-otp', [ResetPasswordController::class, 'verifyOtpResetPasswo
 Route::post('reset-password', [ResetPasswordController::class, 'resetPassword']);
 // Send Newsletter
 Route::post('newsletter', [NewsletterController::class, 'sendNewsletter']);
-// Predict Job Vacancy
-Route::post('predict', [PredictionController::class, 'predict']);
 
 Route::middleware('auth:api')->group(function () {
     // Logout
@@ -55,4 +53,9 @@ Route::middleware('auth:api')->group(function () {
     Route::put('update-profile', [UserController::class, 'updateProfile']);
     // Change User Password
     Route::put('change-password', [UserController::class, 'changePassword']);
+
+    Route::middleware('verified')->group(function () {
+        // Predict Job Vacancy
+        Route::post('predict', [PredictionController::class, 'predict']);
+    });
 });

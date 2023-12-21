@@ -4,6 +4,7 @@ namespace App\Exceptions;
 
 use Throwable;
 use Illuminate\Auth\AuthenticationException;
+use Symfony\Component\HttpKernel\Exception\HttpException;
 use Illuminate\Foundation\Exceptions\Handler as ExceptionHandler;
 
 class Handler extends ExceptionHandler
@@ -39,5 +40,30 @@ class Handler extends ExceptionHandler
         }
 
         return redirect()->guest($exception->redirectTo() ?? route('login'));
+    }
+
+    protected function unverified($request, HttpException $exception)
+    {
+        if ($request->expectsJson()) {
+            return response()->json([
+                'error' => true,
+                'message' => $exception->getMessage()
+            ], $exception->getStatusCode());
+        }
+
+        return redirect()->guest(route('verification.notice'));
+    }
+
+    public function render($request, Throwable $exception)
+    {
+        if ($exception instanceof HttpException) {
+            return $this->unverified($request, $exception);
+        }
+
+        if ($exception instanceof AuthenticationException) {
+            return $this->unauthenticated($request, $exception);
+        }
+
+        return parent::render($request, $exception);
     }
 }
