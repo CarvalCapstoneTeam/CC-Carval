@@ -49,7 +49,7 @@ class EmailVerificationController extends Controller
     /**
      * Verify Email
      * 
-     * This endpoint is used to send email verification to users.
+     * This endpoint is used to verify the user's email.
      * 
      * @bodyParam email string required
      * <ul>

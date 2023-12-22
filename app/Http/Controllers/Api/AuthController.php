@@ -136,7 +136,14 @@ class AuthController extends Controller
     {
         $user = Auth::guard('api')->user();
 
-        return response()->json($user);
+        return response()->json([
+            "error" => false,
+            "message"=> "success",
+            "id" => $user->id,
+            "name" => $user->name,
+            "email" => $user->email,
+            "email_verified_at" => $user->email_verified_at
+        ]);
     }
 
     /**

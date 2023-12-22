@@ -13,7 +13,7 @@ class NewsletterController extends Controller
      * 
      * This endpoint is used to send a newsletter.
      * 
-     * @bodyParam mesage string required
+     * @bodyParam message string required
      * <ul>
      *      <li>Must be filled</li>
      * </ul>
